@@ -23,8 +23,9 @@ class FilmRepository
         return $film->save();
     }
 
-    public function update($film, $request)
+    public function update($filmId, $request)
     {
+        $film = Film::findOrFail($filmId);
         $data = $request->only($film->getFillable());
         $film->update($data);
         return $film;

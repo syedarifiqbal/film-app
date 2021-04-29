@@ -2497,6 +2497,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   computed: {
     isEdit: function isEdit() {
       return !!this.slug;
+    },
+    actionUrl: function actionUrl() {
+      return this.isEdit ? "films/".concat(this.films.id) : 'films';
     }
   },
   methods: {
@@ -2510,7 +2513,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _this.axios.post("/films", _this.prepareFormData());
+                return _this.axios.post(_this.actionUrl, _this.prepareFormData());
 
               case 3:
                 _this.$router.push({

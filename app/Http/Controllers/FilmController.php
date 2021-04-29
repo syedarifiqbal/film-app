@@ -51,9 +51,9 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreFilmRequest $request, FilmRepository $filmRepository, Film $film)
+    public function update(StoreFilmRequest $request, FilmRepository $filmRepository, $filmId)
     {
-        return $filmRepository->update($film, $request);
+        return $filmRepository->update($filmId, $request);
     }
 
     /**

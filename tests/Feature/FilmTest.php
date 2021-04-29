@@ -51,16 +51,16 @@ class FilmTest extends TestCase
         $data = create(Film::class)->toArray();
         $data['photo_binary'] = UploadedFile::fake()->create('test.png', $kilobytes = 0);
         $data['name'] = $updated_name;
-        
+
         $filmID = $data['id'];
-        
+
         $response = $this
-            ->json('put', "/api/films/$filmID", $data);
+            ->json('post', "/api/films/$filmID", $data);
 
         $response->assertJsonPath(
-                "name",
-                $updated_name
-            );
+            "name",
+            $updated_name
+        );
     }
 
     /** @test */
@@ -73,9 +73,8 @@ class FilmTest extends TestCase
         $filmID = $data['id'];
 
         $this
-            ->json('put', "/api/films/$filmID", $data)
+            ->json('post', "/api/films/$filmID", $data)
             ->assertStatus(Response::HTTP_FORBIDDEN);
-
     }
 
     /** @test */
@@ -139,7 +138,7 @@ class FilmTest extends TestCase
         $this->withExceptionHandling();
         $this->signIn();
 
-        
+
         $response = $this
             ->json('post', "/api/films", []);
 

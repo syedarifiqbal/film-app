@@ -31,12 +31,15 @@ class StoreFilmRequest extends FormRequest
             'ticket_price'      => 'required|numeric',
             'country'           => 'required',
             'gerne'             => 'required|array',
-            'photo_binary'      => request()->isMethod('PUT') ? 'required': 'required|mimes:jpeg,jpg,png,gif',
+            'photo_binary'      => request()->routeIs('films.update') ? 'nullable' : 'required|mimes:jpeg,jpg,png,gif',
         ];
     }
 
-    protected function passedValidation(){
-        if(!$this->hasFile('photo_binary')){
+    protected function passedValidation()
+    {
+        if (!$this->hasFile('photo_binary')) {
+            $path = pathinfo(request('photo'), PATHINFO_BASENAME);
+            $this->merge(['photo' => $path]);
             return;
         }
 
@@ -58,6 +61,4 @@ class StoreFilmRequest extends FormRequest
             'photo_binary.mimes'    => 'The phone must be in the following types [jpeg,jpg,png,gif]',
         ];
     }
-
-    
 }

@@ -135,12 +135,15 @@ export default {
   computed: {
     isEdit(){
       return !!this.slug;
+    },
+    actionUrl(){
+      return this.isEdit? `films/${this.films.id}`: 'films';
     }
   },
   methods: {
     async saveFilm() {
       try {
-        await this.axios.post(`/films`, this.prepareFormData());
+        await this.axios.post(this.actionUrl, this.prepareFormData());
         this.$router.push({ name: "films.index" });
       } catch (error) {
         console.log(error.response.data.errors);

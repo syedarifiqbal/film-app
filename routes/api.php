@@ -27,6 +27,6 @@ Route::get('/films', [App\Http\Controllers\FilmController::class, 'index'])->nam
 Route::get('/films/{film}/comments', [App\Http\Controllers\CommentController::class, 'index'])->name('comments.index');
 
 Route::post('/films', [App\Http\Controllers\FilmController::class, 'store'])->name('films.store');
-Route::put('/films/{film}', [App\Http\Controllers\FilmController::class, 'update'])->name('films.update');
+Route::post('/films/{film}', [App\Http\Controllers\FilmController::class, 'update'])->name('films.update');
 Route::get('/films/{film:slug}', [App\Http\Controllers\FilmController::class, 'show'])->name('films.update');
 Route::post('/films/{film}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
