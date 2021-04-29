@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Film;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $seeder = new FilmSeeder();
+        $films = $seeder->run();
+        $films->each(function($film){
+            \App\Models\Comment::factory(1)->create(['film_id' => $film->id]);
+        });;
     }
 }
