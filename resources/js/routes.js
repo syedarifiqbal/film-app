@@ -2,6 +2,7 @@ import FilmIndex from './components/films/Index.vue';
 import FilmCreate from './components/films/Create.vue';
 import Register from './components/authentication/Register.vue';
 import Login from './components/authentication/Login.vue';
+import PageNotFound from './components/static-pages/404.vue';
 
 import VueRouter from 'vue-router';
 
@@ -41,6 +42,15 @@ const routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        name: '404',
+        path: '/404',
+        component: PageNotFound,
+    },
+    {
+        path: '*',
+        redirect: '/404',
     }
 ];
 

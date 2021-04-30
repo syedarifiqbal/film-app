@@ -15,8 +15,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav">
-          <router-link :to="{name: 'films.index'}" class="nav-item nav-link">Films</router-link>
-          <router-link :to="{name: 'films.create'}" class="nav-item nav-link"
+          <router-link :to="{ name: 'films.index' }" class="nav-item nav-link"
+            >Films</router-link
+          >
+          <router-link :to="{ name: 'films.create' }" class="nav-item nav-link"
             >Create File</router-link
           >
         </div>
@@ -72,7 +74,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('logout')
+      this.$store.dispatch("logout");
     },
   },
 };
@@ -80,6 +82,15 @@ export default {
 
 <style>
 body {
+  margin: 0;
   background: #faff81;
+  width: 100%;
+  height: 100%;
+  font-family: "Dosis", sans-serif;
+  font-weight: 300;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
 }
 </style>
